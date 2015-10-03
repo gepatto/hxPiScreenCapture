@@ -1,0 +1,13 @@
+{
+  "name": "hxPiScreenCapture",
+  "url": "https://github.com/gepatto/hxPiScreenCapture",
+  "license": "MIT",
+  "tags": ["raspbery pi","gpio"],
+  "description": "Haxe/OpenFL extension for grabbing the screen on a Raspberry Pi",
+  "version": "0.1.0",
+  "releasenote": "(2015) - Requires libpng",
+  "contributors": ["Patrick Gutlich"],
+  "dependencies": {
+
+  }
+}
