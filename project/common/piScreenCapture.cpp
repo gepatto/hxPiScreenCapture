@@ -6,11 +6,10 @@
 #include <string.h>
 #include <unistd.h>
 #include <dirent.h>
-
 #include "bcm_host.h"
 
 namespace piscreencapture {
-	
+    
 //-----------------------------------------------------------------------
 
 #ifndef ALIGN_TO_16
@@ -19,12 +18,13 @@ namespace piscreencapture {
 
 //-----------------------------------------------------------------------
 const char* program = NULL;
-const char* pathName = "/home/pi";
-//-----------------------------------------------------------------------
+char pathName[255] = "/home/pi/";
+//----------------------------------------
+
 
 void setPath(const char * a)
 {
-    DIR *dir;
+    DIR *dir = NULL;
     dir = opendir(a);
     if (dir == NULL){
         printf("supplied path is not a directory %s\n", a);
@@ -33,20 +33,27 @@ void setPath(const char * a)
         char * tmp_filename = new char[len + 1];
         strncpy(tmp_filename, a, len);
         tmp_filename[len] = '\0';
-        delete[] pathName;
-        pathName = tmp_filename;
+        memset(&pathName[0], 0, sizeof(pathName));
+        strcpy(pathName,tmp_filename);
         printf("ScreenCapture Path is now %s\n", pathName);
     }
 }
 
 int capture() {
-		
-	bool writeToStdout = false;
+        
+    bool writeToStdout = false;
     char pngFileName[255];
     char pngName[255];
     time_t t = time(NULL);
     struct tm *tm = localtime(&t);
     
+    DIR *dir = NULL;
+    dir = opendir(pathName);
+    if (dir == NULL){
+        printf("supplied path is not a directory %s\n", pathName);
+        return 0;
+    }
+
     strftime(pngFileName, sizeof(pngFileName), "%Y%m%d_%H%M%S_snapshot.png", tm);
     sprintf(pngName, "%s%s", pathName , pngFileName);
 
@@ -390,7 +397,7 @@ int capture() {
                     pngName,
                     strerror(errno));
 
-            //exit(EXIT_FAILURE);
+            exit(EXIT_FAILURE);
         }
     }
 
@@ -431,8 +438,8 @@ int capture() {
     pngImagePtr = NULL;
 
     return 0;
-		
-	}
-	
-	
+        
+    }
+    
+    
 }
