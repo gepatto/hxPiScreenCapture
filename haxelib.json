@@ -4,7 +4,7 @@
   "license": "MIT",
   "tags": ["raspbery pi","dispmanx"],
   "description": "Haxe/OpenFL extension for grabbing the screen on a Raspberry Pi",
-  "version": "0.1.0",
+  "version": "0.9.0",
   "releasenote": "(2015) - Requires libpng",
   "contributors": ["Patrick Gutlich"],
   "dependencies": {

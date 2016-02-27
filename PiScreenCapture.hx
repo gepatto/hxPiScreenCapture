@@ -9,14 +9,12 @@ import neko.Lib;
 class PiScreenCapture {
 	
 	
-	public static function setPath(pathName:String):Void {
-		return piscreencapture_setPath(pathName);
+	public static function setPath(pathName:String):Int {
+		return piscreencapture_setPath( pathName ) ;
 	}
 
 	public static function capture():Int {
-		
 		return piscreencapture_capture();
-		
 	}
 	
 	private static var piscreencapture_setPath = Lib.load ("piscreencapture", "piscreencapture_setPath", 1);	

@@ -6,7 +6,7 @@ namespace piscreencapture {
 	
 	
 	int capture();
-	void setPath(const char * a);
+	int setPath(const char * a);
 }
 
 

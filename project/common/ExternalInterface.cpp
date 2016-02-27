@@ -14,8 +14,9 @@
 using namespace piscreencapture;
 
 
-static void piscreencapture_setPath ( value pathName) {
-	setPath( val_string(pathName) );
+static value piscreencapture_setPath ( value pathName) {
+	int returnValue = setPath( val_string(pathName) );
+	return alloc_int( returnValue) ;
 }
 DEFINE_PRIM (piscreencapture_setPath, 1);
 

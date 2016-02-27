@@ -22,12 +22,13 @@ char pathName[255] = "/home/pi/";
 //----------------------------------------
 
 
-void setPath(const char * a)
+int setPath(const char * a)
 {
     DIR *dir = NULL;
     dir = opendir(a);
     if (dir == NULL){
         printf("supplied path is not a directory %s\n", a);
+        return 0;
     }else{
         const size_t len = strlen(a);
         char * tmp_filename = new char[len + 1];
@@ -36,6 +37,7 @@ void setPath(const char * a)
         memset(&pathName[0], 0, sizeof(pathName));
         strcpy(pathName,tmp_filename);
         printf("ScreenCapture Path is now %s\n", pathName);
+         return 1;
     }
 }
 
