@@ -2,8 +2,8 @@
 Haxe / OpenFL extension for grabbing the screen on a Raspberry Pi
 
 # Requirements
-make sure you have libpng-dev installed:
-> sudo apt-get install libpng-dev
+make sure you have libpng12-dev installed:
+> sudo apt-get install libpng12-dev
 
 # Usage
 
